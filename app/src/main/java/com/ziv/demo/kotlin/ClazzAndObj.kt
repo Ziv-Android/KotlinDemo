@@ -2,7 +2,13 @@ package com.ziv.demo.kotlin
 
 import java.util.*
 
+/**
+ * 类和对象
+ */
 // 与class同行的主构造器constructor
+// 所有的class都隐式继承自Any（Any不等于java.lang.Object）
+// 如果子类有主构造函数，则必须在构造函数中进行初始化
+// 如果子类没有主构造函数，则必须在每一个二级构造函数中用 super 关键字初始化基类，或者在代理另一个构造函数。初始化基类时，可以调用基类的不同构造方法。
 class ClazzAndObj constructor(a: String) {
     // val没有set函数，因为它是只读的
     val name: String = a
@@ -54,10 +60,18 @@ class ClazzAndObj constructor(a: String) {
          * 采用对象表达式来创建接口对象，即匿名内部类的实例。
          */
         this.setTestInterface(object : TestInterface{
+            // override重写方法，只有open的fun才允许被重写
             override fun test() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    /**
+     * 伴生对象Companion
+     */
+    companion object Companion {
+
     }
 
     /**

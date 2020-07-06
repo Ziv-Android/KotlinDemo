@@ -1,5 +1,8 @@
 package com.ziv.demo.kotlin
 
+/**
+ * 基本数据类型
+ */
 class DataType {
     lateinit var name: String
 

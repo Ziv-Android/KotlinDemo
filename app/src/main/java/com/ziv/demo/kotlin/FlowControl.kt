@@ -1,5 +1,10 @@
 package com.ziv.demo.kotlin
 
+/**
+ * 流程控制
+ *
+ * 分支和循环
+ */
 class FlowControl {
     // 分支
     // if

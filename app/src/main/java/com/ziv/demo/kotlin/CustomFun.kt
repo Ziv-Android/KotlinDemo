@@ -2,10 +2,19 @@ package com.ziv.demo.kotlin
 
 import android.util.Log
 
-class CustomFun {
+/**
+ * 基础语法
+ *
+ * 属性/变量定义
+ * 函数定义
+ * 接口实现
+ */
+class CustomFun : CustomInterface{
     private val TAG = "CustomFun"
     // 类型后面加?表示可为空, !!抛出空指针异常
     var index:Int? = 0
+
+    lateinit var l:CustomInterface
 
     fun print(): Unit {
         Log.d(TAG, "Kotlin print log. $index")
@@ -56,5 +65,35 @@ class CustomFun {
         for (i in 1 until 10) {
             print(i)
         }
+    }
+
+    override var name: String = ""
+        get() = TODO("Not yet implemented")
+        set(value) {
+            field = value
+        }
+
+    override fun onItemClick() {
+        print("onItemClick")
+    }
+
+    fun setOnItemClick(listener: CustomInterface) {
+        l = listener
+    }
+
+    fun test() {
+        setOnItemClick(object : CustomInterface {
+            override var name: String = ""
+
+            override fun onItemClick() {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemDoubleClick() {
+                super.onItemDoubleClick()
+            }
+        })
+
+        setOnItemClick(this)
     }
 }
