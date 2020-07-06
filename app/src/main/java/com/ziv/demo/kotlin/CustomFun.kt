@@ -82,6 +82,7 @@ class CustomFun : CustomInterface{
     }
 
     fun test() {
+        // 通过对象表达式实现一个匿名内部类的对象
         setOnItemClick(object : CustomInterface {
             override var name: String = ""
 
@@ -95,5 +96,33 @@ class CustomFun : CustomInterface{
         })
 
         setOnItemClick(this)
+
+        val site = object {
+            var name = "ziv test"
+            var url = "www.ziv.com"
+        }
+
+        print(site.name)
+    }
+
+    // 匿名对象是私有，返回类型是匿名对象类型
+    // 匿名对象是公有，返回类型是Any
+
+    // Site为单例
+    object Site{
+
+    }
+
+    // companion伴生对象(与java静态初始化相似)，伴生后外部类就可以访问对象内部元素了，否则不可以
+    // 一个类里面只能声明一个内部关联对象
+    class A {
+        var name = ""
+        companion object {
+            fun create(): A = A()
+            fun showName() {
+                // 不能访问外部类的方法和变量
+//                print("$name")
+            }
+        }
     }
 }
